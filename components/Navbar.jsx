@@ -18,12 +18,12 @@ export default function Navbar() {
       }
     };
 
-    document.addEventListener("touchstart", handler);
+    document.addEventListener("touchend", handler);
     document.addEventListener("mousedown", handler);
 
     return () => {
-      document.removeEventListener("click", handler);
-      document.removeEventListener("touchstart", handler);
+      document.removeEventListener("touchend", handler);
+      document.removeEventListener("mousedown", handler);
     };
   }, [navRef]);
 
