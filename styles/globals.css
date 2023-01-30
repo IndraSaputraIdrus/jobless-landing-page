@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
   background: linear-gradient(
     90deg,
@@ -10,5 +14,4 @@ body {
     #4eff75 63.63%,
     #00ffd1 99.03%
   );
-  @apply after:fixed after:inset-0 after:backdrop-blur-[125px] after:-z-10 after:bg-white/80;
 }

@@ -15,7 +15,7 @@ export default function Card(props) {
             props.logoColor || "bg-white"
           }`}
         >
-          <img src={`/${props.logo}`} className="w-2/3" />
+          <img alt={props.subTitle} src={`/${props.logo}`} className="w-2/3" />
         </div>
         <div>
           <h4

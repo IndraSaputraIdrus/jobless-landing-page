@@ -40,7 +40,7 @@ export default function Jobs() {
   const [active, setActive] = useState(listCard[0].title);
 
   return (
-    <div id="jobs" className="container mx-auto mb-16">
+    <div id="jobs" className="container mx-auto">
       <div className="px-4 py-2 md:py-0 md:px-0">
         <h3 className="font-semibold mb-3">Featured Jobs</h3>
         <div

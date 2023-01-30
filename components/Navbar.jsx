@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import CloseIcon from "./icons/CloseIcon";
 import MenuIcon from "./icons/MenuIcon";
 import clsx from "clsx";
@@ -9,13 +9,32 @@ export default function Navbar() {
   const [active, setActive] = useState("Home");
   const [menu, setMenu] = useState(false);
 
+  const navRef = useRef();
+
+  useEffect(() => {
+    const handler = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setMenu(false);
+      }
+    };
+
+    document.addEventListener("touchstart", handler);
+    document.addEventListener("mousedown", handler);
+
+    return () => {
+      document.removeEventListener("click", handler);
+      document.removeEventListener("touchstart", handler);
+    };
+  }, [navRef]);
+
   return (
-    <header className="container mx-auto mt-7 2xl:mt-14">
+    <header className="container mx-auto">
       <nav className="px-4 md:px-0 flex items-center justify-between">
         <h2 className="text-2xl font-semibold">Jobless</h2>
         <ul
+          ref={navRef}
           className={clsx(
-            "fixed inset-y-0 left-0 md:static",
+            "fixed inset-y-0 left-0 z-10 md:static",
             "transition duration-300",
             "w-56 px-5 py-7 space-y-5 md:w-auto md:space-y-0 md:p-0",
             "bg-white md:bg-transparent",
