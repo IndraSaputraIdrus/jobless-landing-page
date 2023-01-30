@@ -9,7 +9,7 @@ export default function Navbar() {
   const [active, setActive] = useState("Home");
   const [menu, setMenu] = useState(false);
 
-  const navRef = useRef();
+  const navRef = useRef(null);
 
   useEffect(() => {
     const handler = (event) => {
@@ -29,10 +29,9 @@ export default function Navbar() {
 
   return (
     <header className="container mx-auto">
-      <nav className="px-4 md:px-0 flex items-center justify-between">
+      <nav ref={navRef} className="px-4 md:px-0 flex items-center justify-between">
         <h2 className="text-2xl font-semibold">Jobless</h2>
         <ul
-          ref={navRef}
           className={clsx(
             "fixed inset-y-0 left-0 z-10 md:static",
             "transition duration-300",
