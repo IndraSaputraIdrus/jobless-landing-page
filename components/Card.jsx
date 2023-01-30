@@ -1,3 +1,5 @@
+import clsx from "clsx";
+
 export default function Card(props) {
   const { onClick, active } = props;
   return (
@@ -40,22 +42,28 @@ export default function Card(props) {
         {props.description}
       </p>
       <hr
-        className={`block h-[1px] opacity-20 mb-4 duration-300 ${
-          active ? "bg-white/20" : "bg-black/20"
-        }`}
+        className={clsx(
+          "block h-[1px] mb-4",
+          "border-none",
+          "transition",
+          active ? "bg-white/20" : "bg-black/10"
+        )}
       />
-      <div className="flex items-center">
-        {props.skills.map((skill) => (
-          <span
-            className={`block px-4 py-1 rounded-full font-medium text-sm mr-1 duration-300 ${
-              active ? "bg-white/20 text-white" : "bg-black/10 text-black"
-            }`}
-          >
-            {skill}
-          </span>
-        ))}
+      <div className="flex items-center justify-between flex-wrap gap-4">
+        <div className="flex gap-2">
+          {props.skills.map((skill) => (
+            <span
+              key={skill}
+              className={`block px-4 py-1 rounded-full font-medium text-sm mr-1 duration-300 ${
+                active ? "bg-white/20 text-white" : "bg-black/10 text-black"
+              }`}
+            >
+              {skill}
+            </span>
+          ))}
+        </div>
         <span
-          className={`ml-auto text-sm font-semibold duration-300 ${
+          className={`text-sm font-semibold duration-300 ${
             active ? "text-white" : "text-black"
           }`}
         >

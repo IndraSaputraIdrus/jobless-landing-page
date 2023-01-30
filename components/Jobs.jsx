@@ -1,8 +1,10 @@
 import { useState } from "react";
+import clsx from "clsx";
 import Card from "./Card";
 
 const listCard = [
   {
+    id: 1,
     title: "Front-End Developer",
     logo: "figma-logo.svg",
     logoColor: "bg-white",
@@ -13,6 +15,7 @@ const listCard = [
     salary: "$70,000 - $90,000",
   },
   {
+    id: 2,
     title: "Data Scientist",
     logo: "facebook-logo.svg",
     logoColor: "bg-blue-500",
@@ -22,6 +25,7 @@ const listCard = [
     salary: "$100,000 - $130,000",
   },
   {
+    id: 3,
     title: "Technical Writer",
     logo: "vercel-logo.svg",
     logoColor: "bg-black",
@@ -37,16 +41,23 @@ export default function Jobs() {
 
   return (
     <div id="jobs" className="container mx-auto mb-16">
-      <h3 className="font-semibold mb-3">Featured Jobs</h3>
-      <div className="grid grid-cols-3 gap-6">
-        {listCard.map((item) => (
-          <Card
-            key={item.title}
-            active={item.title === active ? true : false}
-            onClick={() => setActive(item.title)}
-            {...item}
-          />
-        ))}
+      <div className="px-4 py-2 md:py-0 md:px-0">
+        <h3 className="font-semibold mb-3">Featured Jobs</h3>
+        <div
+          className={clsx(
+            "grid gap-6",
+            "grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
+          )}
+        >
+          {listCard.map((item) => (
+            <Card
+              key={item.id}
+              active={item.title === active ? true : false}
+              onClick={() => setActive(item.title)}
+              {...item}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );
